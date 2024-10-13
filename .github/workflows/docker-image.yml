@@ -27,7 +27,7 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username wjt40398 --password-stdin
-          docker push wjt40398/my-app-image:$GITHUB_REF_NAME-$GITHUB_SHA
+          docker push wjt40398/intrend-lab:nginx-$GITHUB_REF_NAME-$GITHUB_SHA
                     
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3.0.0  
@@ -35,5 +35,5 @@ jobs:
           token: ${{ secrets.PAT }}
           repository: wtp43/Intrend-lab
           event-type: app-update
-          client-payload: '{"ref": "${{ github.ref }}", "docker_image": "wjt40398/my-app-image:${{ github.ref }}-${{ github.sha }}"}'
+          client-payload: '{"ref": "${{ github.ref }}", "docker_image": "wjt40398/intrend-lab:nginx-${{ github.ref }}-${{ github.sha }}"}'
 
