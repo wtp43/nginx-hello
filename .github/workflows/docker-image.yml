@@ -3,8 +3,6 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
@@ -37,8 +35,5 @@ jobs:
           token: ${{ secrets.PAT }}
           repository: wtp43/Intrend-lab
           event-type: app-update
-          client-payload: |-
-            {
-              "ref": $GITHUB_REF_NAME,
-              "docker_image": wjt40398/my-app-image:$GITHUB_REF_NAME-$GITHUB_SHA
-            }
+          client-payload: '{"ref": "${{ github.ref }}", "docker_image": "wjt40398/my-app-image:${{ GITHUB_REF_NAME }}-${{ GITHUB_SHA }}"}'
+
