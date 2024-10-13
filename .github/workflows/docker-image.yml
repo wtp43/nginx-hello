@@ -30,8 +30,6 @@ jobs:
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username wjt40398 --password-stdin
           docker push wjt40398/my-app-image:$GITHUB_REF_NAME-$GITHUB_SHA
-
-      - name: Update manifest file in k8s repo
                     
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3.0.0  
