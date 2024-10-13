@@ -22,7 +22,7 @@ jobs:
         run: |
           docker buildx create --use
           docker buildx inspect default --bootstrap
-          docker buildx build --file Dockerfile -t wjt40398/my-app-image:$GITHUB_REF_NAME-$GITHUB_SHA --load .
+          docker buildx build --file Dockerfile -t wjt40398/intrend-lab:nginx-$GITHUB_REF_NAME-$GITHUB_SHA --load .
 
       - name: Push Docker image to Docker Hub
         run: |
